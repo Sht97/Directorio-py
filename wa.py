@@ -19,8 +19,6 @@ class App(Frame):
     def CreateUI(self):
         tv = Treeview(self)
         tv['columns'] = ('starttime', 'endtime', 'status')
-        tv.heading("#0", text='Sources', anchor='w')
-        tv.column("#0", anchor="w")
         tv.heading('starttime', text='Start Time')
         tv.column('starttime', anchor='center', width=100)
         tv.heading('endtime', text='End Time')

@@ -2,7 +2,6 @@
 from tkinter import filedialog, messagebox
 from tkinter import *
 
-
 # root = Tk()
 #
 # def fichero(haylibreta):
@@ -45,26 +44,28 @@ def donothing():
 
 
 def abrir():
-    f=filedialog.askopenfile(mode="r")
-    linea=f.readline()
+    f = filedialog.askopenfile(mode="r")
+    linea = f.readline()
     if linea:
         while linea:
-            if linea[-1]=="\n":
-                linea=linea[:-1]
+            if linea[-1] == "\n":
+                linea = linea[:-1]
             print(linea)
             contactos.append(linea)
-            linea=f.readline()
+            linea = f.readline()
     f.close()
+
 
 def guardar():
     f = filedialog.asksaveasfile(mode='w', defaultextension=".txt")
     if f is None:  # asksaveasfile return `None` if dialog closed with "cancel".
         return
-    text2save = str(("Holiiis" +"\n"+"holita"))  # starts from `1.0`, not `0.0`
+    text2save = str(("Holiiis" + "\n" + "holita"))  # starts from `1.0`, not `0.0`
     f.write(text2save)
     f.close()
 
-contactos=[]
+
+contactos = []
 root = Tk()
 root.geometry("500x500")
 menubar = Menu(root)
@@ -78,16 +79,22 @@ filemenu.add_command(label="Exit", command=root.quit)
 menubar.add_cascade(label="File", menu=filemenu)
 filemenu.add_separator()
 tv = Treeview()
-tv['columns'] = ('starttime', 'endtime', 'status')
-tv.heading("#0", text='Sources', anchor='w')
+tv['columns'] = ('Telefono Fijo', 'Celular', 'Correo electronico')
+tv.heading("#0", text='Nombre completo', anchor='w')
 tv.column("#0", anchor="w")
-tv.heading('starttime', text='Start Time')
-tv.column('starttime', anchor='center', width=100)
-tv.heading('endtime', text='End Time')
-tv.column('endtime', anchor='center', width=100)
-tv.heading('status', text='Status')
-tv.column('status', anchor='center', width=100)
+tv.heading('Telefono Fijo', text='Telefono Fijo')
+tv.column('Telefono Fijo', anchor='center', width=100)
+tv.heading('Celular', text='Celular')
+tv.column('Celular', anchor='center', width=100)
+tv.heading('Correo electronico', text='Correo electronico')
+tv.column('Correo electronico', anchor='center', width=100)
 tv.grid(sticky=(N, S, W, E))
 
+
+def LoadTable():
+    tv.insert('', 'end', text="Danielito", values=("454648",45445,"Danielasd@"))
+    tv.insert('', 'end', text="Karolsita", values=("allalalla",'meh', 'sadk'))
+
+LoadTable()
 root.config(menu=menubar)
 root.mainloop()
