@@ -1,1 +1,1 @@
-C:/Users/Karol/Downloads/Directorio-py-master/contactosInicial.xlsx
+contactosInicial.xlsx
