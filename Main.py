@@ -68,7 +68,7 @@ def find():
         btnDelete.place_forget()
         selections = []
         for i in tv.get_children():
-            if tv.item(i)['text'] == nameToFind.get():
+            if nameToFind.get() in tv.item(i)['values'] or tv.item(i)['text'] == nameToFind.get():
                 selections.append(i)
         tv.selection_set(selections)
         if selections == []:
